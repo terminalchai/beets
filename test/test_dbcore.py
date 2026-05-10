@@ -69,12 +69,14 @@ class ModelFixture1(LibModel):
     _indices = (Index("field_one_index", ("field_one",)),)
 
     @cached_classproperty
+    @classmethod
     def _types(cls):
         return {
             "some_float_field": dbcore.types.FLOAT,
         }
 
     @cached_classproperty
+    @classmethod
     def _queries(cls):
         return {
             "some_query": QueryFixture,
