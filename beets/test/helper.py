@@ -487,7 +487,32 @@ class PluginMixin(ConfigMixin):
 
 
 class PluginTestCase(PluginMixin, BeetsTestCase):
+    """
+    DEPRECATED: Use pytest + PytestPluginTestHelper instead.
+    """
+
     pass
+
+
+class PytestPluginTestHelper(PluginMixin, TestHelper):
+    """Helper mixin for pytest-based plugin tests.
+
+    This mixin provides the standard beets test setup and automatically
+    initializes and tears down plugin state for each test.
+
+    .. code-block:: python
+
+        class TestMyPlugin(PytestPluginTestHelper):
+            plugin: ClassVar[str] = "myplugin"
+    """
+
+    @pytest.fixture(autouse=True)
+    def setup(self):
+        self.setup_beets()
+        try:
+            yield
+        finally:
+            self.teardown_beets()
 
 
 class ImportHelper(TestHelper):
