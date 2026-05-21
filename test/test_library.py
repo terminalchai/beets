@@ -1067,11 +1067,7 @@ class TestArtDestination(PytestTestHelper):
         assert b"artYimage" in art
 
 
-class PathStringTest(BeetsTestCase):
-    def setUp(self):
-        super().setUp()
-        self.i = item(self.lib)
-
+class TestPathString(PytestItemInDBHelper):
     def test_item_path_is_bytestring(self):
         assert isinstance(self.i.path, bytes)
 
