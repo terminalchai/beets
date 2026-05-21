@@ -45,6 +45,10 @@ Bug fixes
   ``__getattr__`` fallback, producing a misleading message about the property
   name itself. The wrapped ``RuntimeError`` keeps the original traceback so it
   still points at the real failing line. :bug:`6558`
+- :doc:`plugins/mbcollection`: Handle MusicBrainz ``401 Unauthorized`` errors
+  during ``mbupdate`` without crashing, and log a clearer message that points
+  users to ``musicbrainz.user`` and ``musicbrainz.pass`` configuration.
+  :bug:`6651`
 
 ..
     For plugin developers
