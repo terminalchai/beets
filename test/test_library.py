@@ -1205,7 +1205,7 @@ class TestMtime(PytestTestHelper):
         assert self.i.mtime >= self._mtime()
 
 
-class ImportTimeTest(BeetsTestCase):
+class TestImportTime(PytestTestHelper):
     def added(self):
         self.track = item()
         self.album = self.lib.add_album((self.track,))
